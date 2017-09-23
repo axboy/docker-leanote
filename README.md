@@ -1,0 +1,2 @@
+# leanote
+docker run leanote
