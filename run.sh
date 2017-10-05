@@ -10,5 +10,5 @@ fi
 
 cp -n -r /root/leanote/leanote /data/
 
-echo `date "+%Y-%m-%d %H:%M:%d"`' >>>>>> start leanote service'
+echo `date "+%Y-%m-%d %H:%M:%S"`' >>>>>> start leanote service'
 /data/leanote/bin/run.sh
