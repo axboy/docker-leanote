@@ -18,7 +18,7 @@ docker build . -t zengchw/leanote
 
 ## 运行
 
-建议映射mongo db的数据卷和leanote的conf文件夹，方便迁移,容器内的mongo db为免密码的，若需密码自行修改镜像。以下是参考运行代码。
+为方便迁移，建议映射mongo db的数据卷和leanote的conf文件夹。容器内的mongodb为免密码的，若需密码自行修改镜像。以下是参考运行代码。
 
 ```sh
 docker run -d --name leanote \
@@ -30,7 +30,7 @@ docker run -d --name leanote \
 
 ## 修改时区
 
-进入容器内执行下面脚本，给为北京时间，其它时区自己酌情修改
+进入容器内执行下面脚本，改为北京时间，其它时区酌情修改。
 
 ```sh
 rm -f /etc/localtime 
