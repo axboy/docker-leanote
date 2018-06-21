@@ -5,7 +5,7 @@
 ## 获取镜像
 
 ```sh
-docker pull zengchw/leanote
+docker pull axboy/leanote
 ```
 
 ## 构建镜像
@@ -13,7 +13,7 @@ docker pull zengchw/leanote
 首先克隆本仓库，在项目根目录下执行以下代码
 
 ```sh
-docker build . -t zengchw/leanote
+docker build . -t axboy/leanote
 ```
 
 ## 运行
@@ -25,18 +25,16 @@ docker run -d --name leanote \
     -v `pwd`/db:/data/db \
     -v `pwd`/conf/:/data/leanote/conf \
     -p 9000:9000 \
-    zengchw/leanote
+    axboy/leanote
 ```
 
 ## 修改时区
 
-进入容器内执行下面脚本，改为北京时间，其它时区酌情修改。
+默认为北京时间，如需修改，参考如下命令。
 
 ```sh
-rm -f /etc/localtime 
 ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-rm -f /etc/timezone
-echo "Asia/Shanghai" >> /etc/timezone
+echo "Asia/Shanghai" > /etc/timezone
 ```
 
 ## 其它
