@@ -2,6 +2,15 @@
 
 本镜像基于mongo:3.2构建，实际就是添加一个run.sh脚本，初始化蚂蚁笔记的所需的数据库。
 
+## 概况
+
+tag     |test   |remark
+--------|-------|--------------
+2.5     |Pass   |
+2.6     |Fail   |Can not open with browser
+2.6.1   |Pass   |
+latest  |Pass   |The same as 2.6.1
+
 ## 获取镜像
 
 ```sh
