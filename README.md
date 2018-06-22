@@ -7,7 +7,7 @@
 tag     |test   |remark
 --------|-------|--------------
 2.5     |Pass   |
-2.6     |Fail   |Can not open with browser
+2.6     |Pass   |需修改为http.addr=0.0.0.0
 2.6.1   |Pass   |
 latest  |Pass   |The same as 2.6.1
 
@@ -27,7 +27,8 @@ docker build . -t axboy/leanote
 
 ## 运行
 
-为方便迁移，建议映射mongo db的数据卷和leanote的conf文件夹。容器内的mongodb为免密码的，若需密码自行修改镜像。以下是参考运行代码。
+为方便迁移，建议映射mongo db的数据卷和leanote的conf文件夹。
+容器内的mongodb为免密码的，若需密码自行修改镜像。以下是参考运行代码。
 
 ```sh
 docker run -d --name leanote \
@@ -45,6 +46,19 @@ docker run -d --name leanote \
 ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 echo "Asia/Shanghai" > /etc/timezone
 ```
+
+## [常见问题](https://github.com/leanote/leanote/wiki/QA)
+
+- 2.6版启动后不能访问
+
+2.6版默认绑定localhost, 不能通过ip访问Leanote,
+请修改 app.conf
+
+```
+http.addr=0.0.0.0 # listen on all ip addresses
+```
+
+重启Leanote
 
 ## 其它
 
