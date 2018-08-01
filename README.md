@@ -9,6 +9,7 @@ tag     |test   |remark
 2.5     |Pass   |
 2.6     |Pass   |需修改为http.addr=0.0.0.0
 2.6.1   |Pass   |
+2.6.1-nodb|Pass |目前第一次启动会失败，创建容器后需修改配置重启
 latest  |Pass   |The same as 2.6.1
 
 ## 获取镜像
@@ -27,13 +28,14 @@ docker build . -t axboy/leanote
 
 ## 运行
 
-为方便迁移，建议映射mongo db的数据卷和leanote的conf文件夹。
+为方便迁移，建议映射mongo db的数据卷、leanote的conf和files文件夹。
 容器内的mongodb为免密码的，若需密码自行修改镜像。以下是参考运行代码。
 
 ```sh
 docker run -d --name leanote \
     -v `pwd`/db:/data/db \
     -v `pwd`/conf/:/data/leanote/conf \
+    -v `pwd`/files:/data/leanote/files \
     -p 9000:9000 \
     axboy/leanote
 ```
@@ -68,3 +70,7 @@ http.addr=0.0.0.0 # listen on all ip addresses
 user1 username: admin, password: abc123 (管理员, 只有该用户才有权管理后台, 请及时修改密码)
 user2 username: demo@leanote.com, password: demo@leanote.com (仅供体验使用)
 ```
+
+## 补充
+
+- 关于自定义数据库的，可参考[布宝的慕课手记](https://www.imooc.com/article/49225)
