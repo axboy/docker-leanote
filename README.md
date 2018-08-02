@@ -4,13 +4,14 @@
 
 ## 概况
 
-tag     |test   |remark
---------|-------|--------------
-2.5     |Pass   |
-2.6     |Pass   |需修改为http.addr=0.0.0.0
-2.6.1   |Pass   |
-2.6.1-nodb|Pass |目前第一次启动会失败，创建容器后需修改配置重启
-latest  |Pass   |The same as 2.6.1
+tag     |remark
+--------|--------------
+2.5     |
+2.6     |需修改为http.addr=0.0.0.0
+2.6.1   |
+nodb    |目前第一次启动会失败，创建容器后需修改配置重启
+nodb-arm|Test by raspberry PI 3b+
+latest  |The same as 2.6.1
 
 ## 获取镜像
 
