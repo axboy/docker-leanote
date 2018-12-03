@@ -43,6 +43,7 @@ db.password= # if not exists, please leave it blank
 /data/db                # 内置mongodb的数据目录，nodb版无此目录
 /data/leanote/conf      # 笔记的配置文件目录
 /data/leanote/files     # 笔记内上传的图片、文件存放目录
+/data/leanote/public/upload     # 头像上传路径
 ```
 
 ## 运行

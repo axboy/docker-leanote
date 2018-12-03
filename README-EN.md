@@ -45,6 +45,7 @@ For easier to back up or migrate, suggest shard these folder.
 /data/db                # Inner MongoDB data catalog, nodb version not contains this folder.
 /data/leanote/conf      # Configuration file in this folder.
 /data/leanote/files     # The file or images upload in this folder.
+/data/leanote/public/upload     # Head image path
 ```
 
 ## Run
