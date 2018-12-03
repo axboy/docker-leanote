@@ -9,6 +9,7 @@ RUN set -ex; \
 	rm -rf /var/lib/apt/lists/*; \
 	wget https://static.axboy.cn/leanote/leanote-linux-amd64-v2.6.1.bin.tar.gz -O /root/leanote.tar.gz; \
 	tar -xzf /root/leanote.tar.gz -C /root/ ;\
+	rm -f /root/leanote.tar.gz \
 	chmod a+x /root/run.sh ;\
 	chmod a+x /root/leanote/bin/run.sh ;\
 	ln -snf /usr/share/zoneinfo/$TZ /etc/localtime ;\
