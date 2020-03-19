@@ -8,6 +8,8 @@
 
 镜像提供内置数据库和无数据库版，内置数据库基于mongo:3.2构建，蚂蚁笔记所需数据都已初始化完毕，非内置数据库启动后需修改数据配置再重启。
 
+_内置数据库，容器内多进程非Docker推荐做法，只为方便。_
+
 ## 提供以下镜像版本
 
 - 2.5([Dockerfile](https://github.com/axboy/leanote/blob/2.5/Dockerfile))
