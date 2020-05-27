@@ -1,3 +1,9 @@
+**注意：本仓库已删除大文件并强制提交。**
+
+**Attention: this repo has removed big file and force commited.**
+
+---
+
 # Docker运行[蚂蚁笔记](https://leanote.com/ '官网')
 
 ![Screen shot](./leanote-cn.png)
