@@ -61,6 +61,7 @@ docker run -d --name leanote \
     -v `pwd`/db:/data/db \
     -v `pwd`/conf/:/data/leanote/conf \
     -v `pwd`/files:/data/leanote/files \
+    -v `pwd`/upload:/data/leanote/public/upload \
     -p 9000:9000 \
     axboy/leanote
 ```
