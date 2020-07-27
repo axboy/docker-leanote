@@ -16,13 +16,22 @@
 
 _内置数据库，容器内多进程非Docker推荐做法，只为方便。_
 
-## 提供以下镜像版本
+## 版本选择
 
-- 2.5([Dockerfile](https://github.com/axboy/leanote/blob/2.5/Dockerfile))
-- 2.6([Dockerfile](https://github.com/axboy/leanote/blob/2.6/Dockerfile))
-- 2.6.1,latest([Dockerfile](https://github.com/axboy/leanote/blob/2.6.1/Dockerfile))
+full: 完整功能，内置数据库
+nodb: 完整功能，不包含数据库
+lite: 仅有leanote程序，网页版不支持导出pdf和备份数据库，供客户端用户使用
+
+具体如下
+
+- latest([Dockerfile](https://github.com/axboy/docker-leanote/blob/master/Dockerfile))
 - nodb([Dockerfile](https://github.com/axboy/leanote/blob/master/nodb/Dockerfile))
+- lite([Dockerfile](https://github.com/axboy/leanote/blob/master/lite/Dockerfile))
 - nodb-arm([Dockerfile](https://github.com/axboy/leanote/blob/master/nodb-arm/Dockerfile))
+- lite-arm([Dockerfile](https://github.com/axboy/leanote/blob/master/lite-arm/Dockerfile))
+- ~~2.5([Dockerfile](https://github.com/axboy/leanote/blob/2.5/Dockerfile))~~
+- ~~2.6([Dockerfile](https://github.com/axboy/leanote/blob/2.6/Dockerfile))~~
+- ~~2.6.1([Dockerfile](https://github.com/axboy/leanote/blob/2.6.1/Dockerfile))~~
 
 ## 数据库配置(nodb版使用)
 
@@ -65,6 +74,22 @@ docker run -d --name leanote \
     -p 9000:9000 \
     axboy/leanote
 ```
+
+## 备份数据
+
+- 方案一
+
+通过备份文件来备份数据，数据库版本大更时不兼容，比如mongo:3.2到mongo:3.4
+
+- 方案二
+
+使用admin账号到管理后台备份，lite版不支持
+
+- 方案三
+
+自行通过mongodump备份
+
+个人更倾向于方案一，因为数据库不包含上传的文件，不是仅仅备份数据库就行
 
 ## 修改时区
 

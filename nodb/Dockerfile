@@ -1,19 +1,23 @@
-FROM debian:jessie-slim
+FROM madnight/alpine-wkhtmltopdf-builder:0.12.5-alpine3.10-705860667 as builder
+FROM axboy/leanote:latest as fontBuilder
+
+FROM alpine:3.12
 MAINTAINER zcw
 ENV TZ=Asia/Shanghai
 
-ADD run.sh /root/
-RUN set -ex; \
-	apt-get update; \
-	apt-get install -y --no-install-recommends wget tar ca-certificates; \
-	rm -rf /var/lib/apt/lists/*; \
-	wget https://static.axboy.cn/leanote/leanote-linux-amd64-v2.6.1.bin.tar.gz -O /root/leanote.tar.gz; \
-	tar -xzf /root/leanote.tar.gz -C /root/ ;\
-	rm -f /root/leanote.tar.gz ;\
-	chmod a+x /root/run.sh ;\
-	chmod a+x /root/leanote/bin/run.sh ;\
-	ln -snf /usr/share/zoneinfo/$TZ /etc/localtime ;\
-	echo $TZ > /etc/timezone
-	
+COPY --from=builder /bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
+COPY --from=fontBuilder /usr/share/fonts/truetype /usr/share/fonts/truetype
+
+RUN apk update && apk add --no-cache tzdata mongodb-tools \
+    libgcc libstdc++ libx11 glib libxrender libxext libintl \
+    ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family && \
+    cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+    mkdir /data/ && \
+    wget http://static.axboy.cn/leanote/leanote-linux-amd64-v2.6.1.bin.tar.gz -O /root/leanote.tar.gz && \
+    tar -xzf /root/leanote.tar.gz -C /data/ && \
+    chmod +x /data/leanote/bin/run.sh && \
+    chmod +x /usr/local/bin/wkhtmltopdf && \
+    rm -f /root/leanote.tar.gz
+
 EXPOSE 9000
-CMD /bin/bash /root/run.sh
+CMD sh /data/leanote/bin/run.sh

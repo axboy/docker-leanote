@@ -12,11 +12,18 @@ Image based mongo:3.2, data has been initialized, no database version need edit 
 
 ## Support tag list
 
-- 2.5([Dockerfile](https://github.com/axboy/leanote/blob/2.5/Dockerfile))
-- 2.6([Dockerfile](https://github.com/axboy/leanote/blob/2.6/Dockerfile))
-- 2.6.1,latest([Dockerfile](https://github.com/axboy/leanote/blob/2.6.1/Dockerfile))
+- latest([Dockerfile](https://github.com/axboy/docker-leanote/blob/master/Dockerfile))
 - nodb([Dockerfile](https://github.com/axboy/leanote/blob/master/nodb/Dockerfile))
+- lite([Dockerfile](https://github.com/axboy/leanote/blob/master/lite/Dockerfile))
 - nodb-arm([Dockerfile](https://github.com/axboy/leanote/blob/master/nodb-arm/Dockerfile))
+- lite-arm([Dockerfile](https://github.com/axboy/leanote/blob/master/lite-arm/Dockerfile))
+- ~~2.5([Dockerfile](https://github.com/axboy/leanote/blob/2.5/Dockerfile))~~
+- ~~2.6([Dockerfile](https://github.com/axboy/leanote/blob/2.6/Dockerfile))~~
+- ~~2.6.1([Dockerfile](https://github.com/axboy/leanote/blob/2.6.1/Dockerfile))~~
+
+full: full featured, for easy use
+nodb: include some tools
+lite: include leanote only, not support backup db and export pdf in web
 
 ## Configure database(nodb version used)
 
@@ -58,6 +65,20 @@ docker run -d --name leanote \
     -p 9000:9000 \
     axboy/leanote
 ```
+
+## Backup data
+
+- Option one
+
+Back up data by backing up files, not support major version updates
+
+- Option two
+
+Using admin system backup, not support lite version
+
+- Option three
+
+backup db by self
 
 ## Edit timezone
 
