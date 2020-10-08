@@ -122,6 +122,22 @@ user1 username: admin, password: abc123 (管理员, 只有该用户才有权管�
 user2 username: demo@leanote.com, password: demo@leanote.com (仅供体验使用)
 ```
 
+## mongodb升级
+
+原有2.6.1的版本，mongodb为3.2，现有的latest的mongodb版本为4.2.7，直接映射文件会导致启动失败。
+可使用浏览器登录管理账号，在后台备份数据库，下载到本地并启动一个新版本容器，参考命令如下
+
+```sh
+# 将下载的文件拷贝到新容器
+docker cp ~/download/backup_leanote_1602120903 new_leanote:/
+
+# 进入容器
+docker exec -it new_leanote bash
+
+# 恢复备份的数据库
+mongorestore -h localhost -d leanote --dir /backup_leanote_1602120903/  --drop
+```
+
 ## 补充
 
 - 关于自定义数据库的，可参考[布宝的慕课手记](https://www.imooc.com/article/49225)
