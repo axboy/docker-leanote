@@ -19,7 +19,9 @@ _内置数据库，容器内多进程非Docker推荐做法，只为方便。_
 ## 版本选择
 
 full: 完整功能，内置数据库
+
 nodb: 完整功能，不包含数据库
+
 lite: 仅有leanote程序，网页版不支持导出pdf和备份数据库，供客户端用户使用
 
 具体如下
@@ -27,8 +29,7 @@ lite: 仅有leanote程序，网页版不支持导出pdf和备份数据库，供�
 - latest([Dockerfile](https://github.com/axboy/docker-leanote/blob/master/Dockerfile))
 - nodb([Dockerfile](https://github.com/axboy/leanote/blob/master/nodb/Dockerfile))
 - lite([Dockerfile](https://github.com/axboy/leanote/blob/master/lite/Dockerfile))
-- nodb-arm([Dockerfile](https://github.com/axboy/leanote/blob/master/nodb-arm/Dockerfile))
-- lite-arm([Dockerfile](https://github.com/axboy/leanote/blob/master/lite-arm/Dockerfile))
+- lite-arm([Dockerfile](https://github.com/axboy/leanote/blob/master/lite/Dockerfile-arm))
 - ~~2.5([Dockerfile](https://github.com/axboy/leanote/blob/2.5/Dockerfile))~~
 - ~~2.6([Dockerfile](https://github.com/axboy/leanote/blob/2.6/Dockerfile))~~
 - ~~2.6.1([Dockerfile](https://github.com/axboy/leanote/blob/2.6.1/Dockerfile))~~
