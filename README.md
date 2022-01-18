@@ -148,6 +148,14 @@ server {
 
 文件conf/app.conf内，修改site.url为你对应的访问路径，否则在个人主页无法退出登录，博客页面的部分资源无法加载
 
+- [ssl](https://github.com/axboy/docker-leanote/issues/5)
+
+```
+http.ssl=true
+http.sslcert=/data/leanote/conf/xxxxx.pem
+http.sslkey=/data/leanote/conf/xxxxx.key
+```
+
 ## mongodb升级
 
 原有2.6.1的版本，mongodb为3.2，现有的latest的mongodb版本为4.2.7，直接映射文件会导致启动失败。

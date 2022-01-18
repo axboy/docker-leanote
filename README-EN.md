@@ -136,3 +136,11 @@ server {
 - config site.url
 
 Config site.url in conf/app.conf file, it's the url in you browser, if not, you will not be able to logout in homepage, and some resource will not access in blog page.
+
+- [ssl](https://github.com/axboy/docker-leanote/issues/5)
+
+```
+http.ssl=true
+http.sslcert=/data/leanote/conf/xxxxx.pem
+http.sslkey=/data/leanote/conf/xxxxx.key
+```
