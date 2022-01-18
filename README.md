@@ -116,12 +116,37 @@ http.addr=0.0.0.0 # listen on all ip addresses
 
 ## 其它
 
-初始用户
+- 初始用户
 
 ```
 user1 username: admin, password: abc123 (管理员, 只有该用户才有权管理后台, 请及时修改密码)
 user2 username: demo@leanote.com, password: demo@leanote.com (仅供体验使用)
 ```
+
+- 禁用demo用户
+
+demo用户就是一个普通用户，能随意操作，建议禁掉，nginx禁用 **/demo** 路径
+
+```
+server { 
+    # 省略部分
+
+    location / {
+        proxy_pass              http://172.17.0.1:9000;
+        proxy_set_header        Host            $host;
+        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-For $remote_addr;
+    }
+    location /demo {
+        deny all;
+    }
+}
+
+```
+
+- 修改site.url
+
+文件conf/app.conf内，修改site.url为你对应的访问路径，否则在个人主页无法退出登录，博客页面的部分资源无法加载
 
 ## mongodb升级
 

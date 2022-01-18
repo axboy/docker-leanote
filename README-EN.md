@@ -6,7 +6,7 @@
 
 - [English](./README-EN.md)
 
-I'm so sorry, my English is poor.
+Bad english, that's all.
 
 Image based mongo:3.2, data has been initialized, no database version need edit configuration file, then restart container.
 
@@ -22,7 +22,9 @@ Image based mongo:3.2, data has been initialized, no database version need edit 
 - ~~2.6.1([Dockerfile](https://github.com/axboy/leanote/blob/2.6.1/Dockerfile))~~
 
 full: full featured, for easy use
+
 nodb: include some tools
+
 lite: include leanote only, not support backup db and export pdf in web
 
 ## Configure database(nodb version used)
@@ -103,9 +105,34 @@ Then restart Leanote
 
 ## Other
 
-The initial users table has two accounts:
+- The initial accounts:
 
 ```
 user1 username: admin, password: abc123 (administrator who can manage Leanote)
 user2 username: demo@leanote.com, password: demo@leanote.com (just for demonstration)
 ```
+
+- disable demo account
+
+demo account is a normal account acutally, can operate all resource in this account, It's recommended to disable it, you can deny the URL **/demo**.
+
+```
+server { 
+    # ignore some config
+
+    location / {
+        proxy_pass              http://172.17.0.1:9000;
+        proxy_set_header        Host            $host;
+        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-For $remote_addr;
+    }
+    location /demo {
+        deny all;
+    }
+}
+
+```
+
+- config site.url
+
+Config site.url in conf/app.conf file, it's the url in you browser, if not, you will not be able to logout in homepage, and some resource will not access in blog page.
