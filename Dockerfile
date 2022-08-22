@@ -5,7 +5,7 @@ ENV TZ=Asia/Shanghai
 ADD run.sh /root/
 RUN set -ex; \
     apt-get update; \
-    apt-get install -y --no-install-recommends wget tar vim; \
+    apt-get install -y --no-install-recommends wget tar vim libssl1.0-dev; \
 
     # install font
     apt-get install -y xvfb libXrender* libfontconfig*; \
@@ -29,7 +29,7 @@ RUN set -ex; \
     rm -rf wkhtmltox wkhtmltox-0.12.4_linux-generic-amd64.tar.xz ;\
 
     #download leanote
-    wget https://static.axboy.cn/leanote/leanote-linux-amd64-v2.6.1.bin.tar.gz -O /root/leanote.tar.gz; \
+    wget http://static.axboy.cn/leanote/leanote-linux-amd64-v2.6.1.bin.tar.gz -O /root/leanote.tar.gz; \
     tar -xzf /root/leanote.tar.gz -C /root/ ;\
     rm -f /root/leanote.tar.gz ;\
     chmod a+x /root/run.sh ;\
